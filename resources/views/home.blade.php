@@ -3,18 +3,23 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <!-- Side Bar -->
+        <div class="col-md-2">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Navigation') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    <a href="{{ url('#')}}">Upload CSV</a>
+                </div>
+            </div>
+        </div>
 
-                    {{ __('You are logged in!') }}
+        <!-- Main Bar -->
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header">{{ __('Welcome to Coupon Distribution System') }}</div>
+                <div class="card-body">
+                    {{ __('Please Upload the CSV file') }}
                 </div>
             </div>
         </div>
