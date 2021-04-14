@@ -20,6 +20,16 @@
                 <div class="card-header">{{ __('Welcome to Coupon Distribution System') }}</div>
                 <div class="card-body">
                     {{ __('Please Upload the CSV file') }}
+                    <form action="/p" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input form-control" id="customFile" name="csv">
+                            <label class="custom-file-label pb-2" for="customFile">Choose file</label>
+                        </div>
+                        <div class="mt-2">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
