@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +22,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('/p', [App\Http\Controllers\HomeController::class, 'store'])->name('welcome');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::post('/p', [HomeController::class, 'store'])->name('welcome');
+
+Auth::routes();
+
+Route::get('/student', [StudentController::class, 'index'])->name('student');

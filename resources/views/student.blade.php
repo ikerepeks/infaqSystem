@@ -24,9 +24,9 @@
         <!-- Main Bar -->
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">{{ __('Welcome to Coupon Distribution System') }}</div>
+                <div class="card-header">{{ __('Welcome to Student Management') }}</div>
                 <div class="card-body">
-                    {{ __('Please Upload the CSV file') }}
+                    {{ __('Please Insert Student Information') }}
                     <form action="/p" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="custom-file">
