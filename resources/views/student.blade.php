@@ -27,15 +27,33 @@
                 <div class="card-header">{{ __('Welcome to Student Management') }}</div>
                 <div class="card-body">
                     {{ __('Please Insert Student Information') }}
-                    <form action="/p" method="post" enctype="multipart/form-data">
+                    <form action="{{ url('/student/insert') }}" method="post">
                         @csrf
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input form-control" id="customFile" name="csv">
-                            <label class="custom-file-label pb-2" for="customFile">Choose file</label>
-                        </div>
-                        <div class="mt-2">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Validity</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="addRow" class="addRow">
+
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                <td><input type="text" class="form-control" name="name[]"></td>
+                                <td><input type="number" class="form-control" name="phone[]"></td>
+                                <td><input type="date" class="form-control" name="validity[]"></td>
+                                <td><input type="number" class="form-control" name="amount[]"></td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                        <button type="submit" class="btn btn-success btn-sm">Submit</button>
                     </form>
                 </div>
             </div>

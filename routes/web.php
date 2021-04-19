@@ -32,3 +32,4 @@ Route::post('/p', [HomeController::class, 'store'])->name('welcome');
 Auth::routes();
 
 Route::get('/student', [StudentController::class, 'index'])->name('student');
+Route::post('/student/insert', [StudentController::class, 'insert'])->name('student');
