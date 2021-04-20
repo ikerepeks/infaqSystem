@@ -3,40 +3,52 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <!-- Side Bar -->
-        <div class="col-md-2">
-            <div class="card">
-                <div class="card-header">{{ __('Navigation') }}</div>
-
-                <div class="card-body">
-                    <table>
-                        <tr>
-                            <td><a href="{{ url('/home')}}">Home</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="{{ url('/student')}}">Manage Student</a></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-
         <!-- Main Bar -->
-        <div class="col-md-10">
+        <div class="col-md">
             <div class="card">
                 <div class="card-header">{{ __('Welcome to Coupon Distribution System') }}</div>
                 <div class="card-body">
-                    {{ __('Please Upload the CSV file') }}
-                    <form action="/p" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input form-control" id="customFile" name="csv">
-                            <label class="custom-file-label pb-2" for="customFile">Choose file</label>
+                    <div class="container">
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <div class="h1">Student:</div>
+                                <div class="h2">{{ $numStudent->id }}</div>
+                            </div>
+                            <div class="col-6">
+                                <div class="h1">Used:</div>
+                                <div class="h2">RM1300.00</div>
+                            </div>
                         </div>
-                        <div class="mt-2">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <div class="container">
+                        <div class="row text-center pt-5">
+                            <div class="col h3">List of Student</div>
                         </div>
-                    </form>
+                        <div class="row">
+                            <table class="table table-sm table-bordered">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Code</th>
+                                    <th>Validity</th>
+                                    <th>Amount</th>
+                                    <th>Spent</th>
+                                </tr>
+                            @foreach ($student as $key => $data)
+                                <tr>
+                                    <td>{{ $data-> id }}</td>
+                                    <td>{{ $data-> name }}</td>
+                                    <td>0{{ $data-> phone }}</td>
+                                    <td>{{ $data-> code }}</td>
+                                    <td>{{ $data-> validity }}</td>
+                                    <td>{{ $data-> amount }}</td>
+                                    <td>{{ $data-> spent }}</td>
+                                </tr>
+                            @endforeach
+                        </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

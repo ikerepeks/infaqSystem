@@ -22,8 +22,10 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
+    {   
+        $student = \App\Models\Student::all();
+        $numStudent = \App\Models\Student::latest()->first();
+        return view('home',compact('student', 'numStudent'));
     }
 
     public function store()

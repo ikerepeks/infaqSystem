@@ -20,7 +20,8 @@ class CreateStudentsTable extends Migration
             $table->string('code')->nullable();
             $table->date('validity');
             $table->decimal('amount');
-            $table->decimal('current')->nullable();
+            $table->decimal('spent')->nullable();
+            $table->integer('counter')->nullable();
             $table->timestamps();
         });
     }
