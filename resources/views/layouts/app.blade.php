@@ -35,6 +35,7 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="p-3"><a href="{{ url('/home')}}">Home</a></li> 
                         <li class="p-3"><a href="{{ url('/student')}}">Add Student</a></li>
+                        <li class="p-3"><a href="{{ url('/student/manage')}}">Manage Student</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

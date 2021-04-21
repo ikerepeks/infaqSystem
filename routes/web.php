@@ -32,4 +32,8 @@ Route::post('/p', [HomeController::class, 'store'])->name('welcome');
 Auth::routes();
 
 Route::get('/student', [StudentController::class, 'index'])->name('student');
-Route::post('/student/insert', [StudentController::class, 'insert'])->name('student');
+Route::post('/student/insert', [StudentController::class, 'insert'])->name('student.insert');
+Route::get('/student/manage', [StudentController::class, 'manage'])->name('manage');
+Route::get('/student/edit/{student}', [StudentController::class, 'edit'])->name('student.edit');
+Route::patch('/student/update/{student}', [StudentController::class, 'update'])->name('student.manage');
+Route::delete('/student/delete/{student}', [StudentController::class, 'destroy'])->name('delete');

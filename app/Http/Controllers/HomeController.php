@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index()
     {   
         $student = \App\Models\Student::all();
-        $numStudent = \App\Models\Student::latest()->first();
+        $numStudent = \App\Models\Student::count();
         return view('home',compact('student', 'numStudent'));
     }
 

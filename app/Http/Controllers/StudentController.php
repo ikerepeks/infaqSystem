@@ -32,6 +32,39 @@ class StudentController extends Controller
             $task->save();
         }
 
+        return redirect('/home');
+    }
+
+    public function update(Student $student){
+        $data = request()->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'validity' => 'required',
+            'amount' => 'required',
+        ]);
+
+        $task = Student::find($student->id);
+        $task-> name = $request->name;
+        $task-> phone = $request->phone;
+        $task-> validity = $request->validity;
+        $task-> amount = $request->amount;
+        $task->save();
         return redirect()->back();
+    }
+
+    public function edit(Student $student){
+        return view('edit',compact('student'));
+    }
+
+    public function manage(){
+        $student = \App\Models\Student::all();
+        return view('manage',compact('student'));
+    }
+
+    public function destroy(Student $student){
+        $task = Student::find($student->id);
+        $task->delete();
+
+        return redirect('/student/manage');
     }
 }

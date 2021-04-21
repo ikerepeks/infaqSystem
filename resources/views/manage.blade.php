@@ -6,20 +6,8 @@
         <!-- Main Bar -->
         <div class="col-md">
             <div class="card">
-                <div class="card-header">{{ __('Welcome to Coupon Distribution System') }}</div>
+                <div class="card-header">{{ __('Manage Student') }}</div>
                 <div class="card-body">
-                    <div class="container">
-                        <div class="row text-center">
-                            <div class="col-6">
-                                <div class="h1">Student:</div>
-                                <div class="h2">{{ $numStudent }}</div>
-                            </div>
-                            <div class="col-6">
-                                <div class="h1">Used:</div>
-                                <div class="h2">RM1300.00</div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="container">
                         <div class="row text-center pt-5">
                             <div class="col h3">List of Student</div>
@@ -44,6 +32,7 @@
                                     <td>{{ $data-> validity }}</td>
                                     <td>{{ $data-> amount }}</td>
                                     <td>{{ $data-> spent }}</td>
+                                    <td><a href="/student/edit/{{ $data->id }}">Edit</a></td>
                                 </tr>
                             @endforeach
                         </table>
