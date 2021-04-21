@@ -16,12 +16,12 @@
                             <div class="col">
 
                             <!-- Form for edit input -->
-                            <form action="/student/update/{{$student->id}}" method="post">
+                            <form action="/student/update/{{ $student->id }}" method="post">
                                 @csrf
                                 @method('PATCH')
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" value="{{ $student->name }}" id="name"
+                                    <input type="text" class="form-control" placeholder="{{ $student->name }}" id="name"
                                         name="name" />
                                 </div>
                                 <div class="mb-3">
@@ -42,7 +42,7 @@
                                 <div class="mb-3">
                                     <label for="amount" class="form-label">Amount</label>
                                     <input type="text" class="form-control" value="{{ $student->amount }}"
-                                        id="amount" />
+                                        id="amount" name="amount"/>
                                 </div>
                                 <div class="mb-3">
                                     <input type="submit" class="btn btn-primary" value="Edit">

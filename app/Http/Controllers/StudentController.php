@@ -43,19 +43,19 @@ class StudentController extends Controller
     }
 
     public function update(Student $student){
-        $data = request()->validate([
+        
+        request()->validate([
             'name' => 'required',
             'phone' => 'required',
             'validity' => 'required',
             'amount' => 'required',
         ]);
-
-        $task = Student::find($student->id);
-        $task-> name = $request->name;
-        $task-> phone = $request->phone;
-        $task-> validity = $request->validity;
-        $task-> amount = $request->amount;
-        $task->save();
+        
+        $student-> name = request()->input('name');
+        $student-> phone = request()->input('phone');
+        $student-> validity = request()->input('validity');
+        $student-> amount = request()->input('amount');
+        $student->save();
         return redirect()->back();
     }
 
