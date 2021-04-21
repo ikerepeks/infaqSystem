@@ -21,14 +21,21 @@ class StudentController extends Controller
             'amount' => 'required',
         ]);
 
-        $count = count($request->name);
+        // $salt = random_bytes(9);
+        // $code = "UITMZAKAT".$request->phone[$i].$salt;
 
+        $count = count($request->name);
+        
         for ($i=0; $i < $count; $i++){
+
+            $salt = uniqid();
+            $code = "UITMZAKAT".$request->phone[$i].$salt;
             $task = new Student();
             $task-> name = $request->name[$i];
             $task-> phone = $request->phone[$i];
             $task-> validity = $request->validity[$i];
             $task-> amount = $request->amount[$i];
+            $task -> code = $code;
             $task->save();
         }
 

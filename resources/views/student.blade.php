@@ -27,7 +27,7 @@
                                     <td><input type="number" class="form-control" name="amount[]"></td>
                                     <td><input type="button" class="btn btn-primary" name="add" id="add" value="Add">
                                     </td>
-                                    <td><input type="button" class="btn btn-primary" name="remove" id="remove" value="Remove">
+                                    <td><input type="button" class="btn btn-danger" name="remove" id="remove" value="Remove">
                                     </td>
                                 </tr>
                             </tbody>
