@@ -21,7 +21,7 @@
                                 @method('PATCH')
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" placeholder="{{ $student->name }}" id="name"
+                                    <input type="text" class="form-control" value="{{ $student->name }}" id="name"
                                         name="name" />
                                 </div>
                                 <div class="mb-3">

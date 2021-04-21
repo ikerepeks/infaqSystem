@@ -50,13 +50,14 @@ class StudentController extends Controller
             'validity' => 'required',
             'amount' => 'required',
         ]);
-        
+
         $student-> name = request()->input('name');
         $student-> phone = request()->input('phone');
         $student-> validity = request()->input('validity');
         $student-> amount = request()->input('amount');
         $student->save();
-        return redirect()->back();
+
+        return redirect('/student/manage');
     }
 
     public function edit(Student $student){
