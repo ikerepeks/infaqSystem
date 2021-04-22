@@ -11,12 +11,12 @@
                     <div class="container">
                         <div class="row text-center">
                             <div class="col-6">
-                                <div class="h1">Student:</div>
+                                <div class="h1">Total Student:</div>
                                 <div class="h2">{{ $numStudent }}</div>
                             </div>
                             <div class="col-6">
-                                <div class="h1">Used:</div>
-                                <div class="h2">RM1300.00</div>
+                                <div class="h1">Total Balance:</div>
+                                <div class="h2">RM{{ $totalamount }}</div>
                             </div>
                         </div>
                     </div>

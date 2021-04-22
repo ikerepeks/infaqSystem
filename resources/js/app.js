@@ -10,7 +10,7 @@ $(".custom-file-input").on("change", function () {
 
 $('#add').click(function (e) {
   e.preventDefault();
-  $('#form_body').append('<tr><td><input type="text" class="form-control" name="name[]"></td><td><input type="number" class="form-control" name="phone[]"></td><td><input type="date" class="form-control" name="validity[]"></td><td><input type="number" class="form-control" name="amount[]"></td></tr>');
+  $('#form_body').append('<tr><td><input type="text" class="form-control" name="name[]" required></td><td><input type="number" class="form-control" name="phone[]" required></td><td><input type="date" class="form-control" name="validity[]" required></td><td><input type="number" class="form-control" name="amount[]" required></td></tr>');
 });
 $('#remove').click(function (e) {
   if ($('#form_body').children('tr').length > 1) {

@@ -14,25 +14,24 @@
                         @csrf
                         <table class="table table-sm table-bordered">
                             <tr>
-                                <th class="w-50">Name</th>
-                                <th class="w-50">Phone</th>
-                                <th class="w-50">Validity</th>
-                                <th class="w-25">Amount</th>
+                                <th class="w-auto">Name</th>
+                                <th class="w-auto">Phone</th>
+                                <th class="w-auto">Validity</th>
+                                <th class="w-auto">Amount (RM)</th>
                             </tr>
                             <tbody id="form_body">
                                 <tr>
-                                    <td><input type="text" class="form-control" name="name[]"></td>
-                                    <td><input type="number" class="form-control" name="phone[]"></td>
-                                    <td><input type="date" class="form-control" name="validity[]"></td>
-                                    <td><input type="number" class="form-control" name="amount[]"></td>
+                                    <td><input type="text" class="form-control" name="name[]" required></td>
+                                    <td><input type="number" class="form-control" name="phone[]" required></td>
+                                    <td><input type="date" class="form-control" name="validity[]" required></td>
+                                    <td><input type="number" class="form-control" name="amount[]" required></td>
                                     <td><input type="button" class="btn btn-primary" name="add" id="add" value="Add">
-                                    </td>
-                                    <td><input type="button" class="btn btn-danger" name="remove" id="remove" value="Remove">
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <input type="submit" class="btn btn-primary" value="Submit">
+                        <input type="button" class="btn btn-danger" name="remove" id="remove" value="Remove Last Row">
                     </form>
                 </div>
             </div>

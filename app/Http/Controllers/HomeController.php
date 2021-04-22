@@ -25,7 +25,8 @@ class HomeController extends Controller
     {   
         $student = auth()->user()->student;
         $numStudent = auth()->user()->student()->count();
-        return view('home',compact('student', 'numStudent'));
+        $totalamount = auth()->user()->student()->sum('amount');
+        return view('home',compact('student', 'numStudent','totalamount'));
     }
 
     public function store()

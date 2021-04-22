@@ -41,7 +41,7 @@ class StudentController extends Controller
             $task->save();
         }
 
-        return redirect('/student/manage');
+        return redirect('/home');
     }
 
     public function update(Student $student){
