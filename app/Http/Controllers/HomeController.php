@@ -23,8 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        $student = \App\Models\Student::all();
-        $numStudent = \App\Models\Student::count();
+        $student = auth()->user()->student;
+        $numStudent = auth()->user()->student()->count();
         return view('home',compact('student', 'numStudent'));
     }
 

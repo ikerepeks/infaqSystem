@@ -22,7 +22,10 @@ class CreateStudentsTable extends Migration
             $table->decimal('amount');
             $table->decimal('spent')->nullable();
             $table->integer('counter')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->index('user_id');
         });
     }
 

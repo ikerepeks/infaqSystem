@@ -30,16 +30,18 @@ class StudentController extends Controller
 
             $salt = uniqid();
             $code = "UITMZAKAT".$request->phone[$i].$salt;
+            $userid = auth()->user()->id;
             $task = new Student();
             $task-> name = $request->name[$i];
             $task-> phone = $request->phone[$i];
             $task-> validity = $request->validity[$i];
             $task-> amount = $request->amount[$i];
             $task -> code = $code;
+            $task -> user_id = $userid;
             $task->save();
         }
 
-        return redirect('/home');
+        return redirect('/student/manage');
     }
 
     public function update(Student $student){
@@ -65,7 +67,7 @@ class StudentController extends Controller
     }
 
     public function manage(){
-        $student = \App\Models\Student::all();
+        $student = auth()->user()->student;
         return view('manage',compact('student'));
     }
 
