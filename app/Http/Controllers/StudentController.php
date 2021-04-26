@@ -68,7 +68,7 @@ class StudentController extends Controller
     }
 
     public function edit(Student $student){
-        return view('edit',compact('student'));
+        return view('user.edit',compact('student'));
     }
 
     public function manage(){

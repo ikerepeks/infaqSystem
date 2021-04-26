@@ -46,6 +46,6 @@ Route::post('/login/vendor', [LoginController::class, 'vendorLogin']);
 Route::post('/register/admin', [RegisterController::class,'createAdmin']);
 Route::post('/register/vendor', [RegisterController::class,'createVendor']);
 
-// View Router
+// View Route
 Route::view('/admin', 'admin.admin');
 Route::view('/vendor', 'vendor.vendor');
