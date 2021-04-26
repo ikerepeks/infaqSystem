@@ -26,13 +26,7 @@ class HomeController extends Controller
         $student = auth()->user()->student;
         $numStudent = auth()->user()->student()->count();
         $totalamount = auth()->user()->student()->sum('amount');
-        return view('home',compact('student', 'numStudent','totalamount'));
+        return view('user.home',compact('student', 'numStudent','totalamount'));
     }
 
-    public function store()
-    {   
-        $csv = request()->file('csv');
-        $path = $csv->store('csvsubmit');
-        return view('welcome');
-    }
 }

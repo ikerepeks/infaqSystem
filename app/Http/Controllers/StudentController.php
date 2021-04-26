@@ -7,9 +7,14 @@ use App\Models\Student;
 
 class StudentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
-        return view('student');
+        return view('user.student');
     }
 
     public function insert(Request $request)
@@ -68,7 +73,7 @@ class StudentController extends Controller
 
     public function manage(){
         $student = auth()->user()->student;
-        return view('manage',compact('student'));
+        return view('user.manage',compact('student'));
     }
 
     public function destroy(Student $student){
