@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('student/{code}', [ApiController::class, 'getStudent']);
 Route::put('student/{code}', [ApiController::class, 'authorized']);
+Route::get('student/', [ApiController::class, 'index']);
