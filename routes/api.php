@@ -19,6 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('student/{code}', [ApiController::class, 'getStudent']);
-Route::put('student/{code}', [ApiController::class, 'authorized']);
-Route::get('student/', [ApiController::class, 'index']);
+Route::get('/student', [ApiController::class, 'getStudent'])->middleware('auth:api');
+Route::post('/student', [ApiController::class, 'authorized'])->middleware('auth:api');
+Route::get('student/all', [ApiController::class, 'index'])->middleware('auth:api');
+
+Route::post('/register', [ApiController::class, 'register']);
+Route::post('/login', [ApiController::class, 'login']);
