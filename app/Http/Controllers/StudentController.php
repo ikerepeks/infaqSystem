@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Exports\StudentsExport;
+use App\Imports\StudentsImport;
 
 class StudentController extends Controller
 {
@@ -80,6 +82,20 @@ class StudentController extends Controller
         $task = Student::find($student->id);
         $task->delete();
 
+        return redirect('/student/manage');
+    }
+
+    public function excelView(){
+        return view('user.excel');
+    }
+
+    public function exportExcel($type){
+        return \Excel::download(new StudentsExport, 'students.'.$type);
+    }
+
+    public function importExcel(Request $request){
+        \Excel::import(new StudentsImport,$request->import_file);
+        \Session::put('success', 'Your file is imported successfully in database.');
         return redirect('/student/manage');
     }
 }

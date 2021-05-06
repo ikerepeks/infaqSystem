@@ -10,8 +10,11 @@ class Student extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name','phone','validity','amount','code'
+        'name','phone','validity','amount','code','user_id'
     ];
+
+    protected $table = 'students';
+    protected $guarded = array();
 
     public function user() {
         return $this->belongsTo(User::class);

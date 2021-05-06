@@ -5,6 +5,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ExcelController;
 
 
 /*
@@ -45,6 +46,11 @@ Route::post('/login/admin', [LoginController::class, 'adminLogin']);
 Route::post('/login/vendor', [LoginController::class, 'vendorLogin']);
 Route::post('/register/admin', [RegisterController::class,'createAdmin']);
 Route::post('/register/vendor', [RegisterController::class,'createVendor']);
+
+// Uploading Excel Route
+Route::get('/student/importExportView', [StudentController::class, 'excelView'])->name('importExportView');
+Route::get('/student/exportExcel/{type}', [StudentController::class, 'exportExcel'])->name('exportExcel');
+Route::post('/student/importExcel', [StudentController::class, 'importExcel'])->name('importExcel');
 
 // View Route
 Route::view('/admin', 'admin.admin');
