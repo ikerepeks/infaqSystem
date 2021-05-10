@@ -13,23 +13,29 @@ class ApiController extends Controller
     }
 
     public function getStudent(Request $request){
+        dd($request->date);
         return Student::select('id','amount')->where('code', $request->code)->get();
     }
 
     public function authorized(Request $request){
         
-        $data = Student::select('id','amount')->where('code', $request->code)->get();
+        $data = Student::select('id','amount','validity')->where('code', $request->code)->get();
         if ($data->isEmpty()){
             return response()->json("Code does not exist", 400);
         }
-
-        $total = $data[0]['amount'] - $request->amount;
+        if($request->date < $data[0]['validity']){
+            $total = $data[0]['amount'] - $request->amount;
         
-        if ($total > 0){
-            return response()->json("Transac Success", 200);
+            if ($total > 0){
+                return response()->json("Transac Success", 200);
+            } else {
+                return response()->json("Balance Not Enough", 200);
+            }
         } else {
-            return response()->json("Balance Not Enough", 200);
+            return response()->json("Coupon Expired", 200);
         }
+
+        
     }
 
     public function register(Request $request)
