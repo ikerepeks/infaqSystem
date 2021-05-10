@@ -32,7 +32,7 @@
                                 <tr>
                                     <td>{{ $data-> id }}</td>
                                     <td>{{ $data-> code }}</td>
-                                    <td>0{{ $data-> amount }}</td>
+                                    <td>{{ $data-> amount }}</td>
                                     <td>{{ $data-> created_at }}</td>
                                 </tr>
                             @endforeach

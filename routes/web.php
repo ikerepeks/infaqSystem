@@ -53,6 +53,8 @@ Route::get('/student/importExportView', [StudentController::class, 'excelView'])
 Route::get('/student/exportExcel/{type}', [StudentController::class, 'exportExcel'])->name('exportExcel');
 Route::post('/student/importExcel', [StudentController::class, 'importExcel'])->name('importExcel');
 
+// Vendor Controller Router
+Route::get('/vendor', [VendorController::class, 'index'])->name('vendorHomer');
+
 // View Route
 Route::view('/admin', 'admin.admin');
-Route::get('/vendor', [VendorController::class, 'index'])->name('vendorHomer');

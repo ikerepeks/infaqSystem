@@ -20,10 +20,16 @@ class ApiController extends Controller
 
     public function authorized(Request $request){
         
+        // Error Checking
         $data = Student::select('id','amount','validity')->where('code', $request->code)->get();
         if ($data->isEmpty()){
             return response()->json("Code does not exist", 400);
         }
+        if ($request->amount < 0){
+            return response()->json("Amount cannot be negative", 200);
+        }
+
+
         if($request->date < $data[0]['validity']){
             $total = $data[0]['amount'] - $request->amount;
         
