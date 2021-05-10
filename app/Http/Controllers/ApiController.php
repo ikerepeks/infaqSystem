@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Models\Vendor;
+use App\Models\Transaction;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class ApiController extends Controller
     }
 
     public function getStudent(Request $request){
-        dd($request->date);
+        dd(auth('api')->user()->id);
         return Student::select('id','amount')->where('code', $request->code)->get();
     }
 
@@ -27,6 +28,20 @@ class ApiController extends Controller
             $total = $data[0]['amount'] - $request->amount;
         
             if ($total > 0){
+
+                //insert to transaction database
+                $transaction = new Transaction;
+                $transaction->code = $request->code;
+                $transaction->amount = $request->amount;
+                $transaction->vendor_id = auth('api')->user()->id;
+                $transaction->save();
+
+                $student = Student::find($data[0]['id']);
+                $student->spent = $student->spent + $request->amount;
+                $student->amount = $total;
+                $student->counter = $student->counter + 1;
+                $student->save();
+                
                 return response()->json("Transac Success", 200);
             } else {
                 return response()->json("Balance Not Enough", 200);
