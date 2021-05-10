@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\VendorController;
 
 
 /*
@@ -54,4 +55,4 @@ Route::post('/student/importExcel', [StudentController::class, 'importExcel'])->
 
 // View Route
 Route::view('/admin', 'admin.admin');
-Route::view('/vendor', 'vendor.vendor');
+Route::get('/vendor', [VendorController::class, 'index'])->name('vendorHomer');
