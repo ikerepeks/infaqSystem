@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Student;
 use App\Models\Vendor;
 use App\Models\Transaction;
@@ -9,31 +10,33 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return Student::all();
     }
 
-    public function getStudent(Request $request){
-        dd(auth('api')->user()->id);
-        return Student::select('id','amount')->where('code', $request->code)->get();
+    public function getStudent(Request $request)
+    {
+        return Student::select('id', 'amount')->where('code', $request->code)->get();
     }
 
-    public function authorized(Request $request){
-        
+    public function authorized(Request $request)
+    {
+
         // Error Checking
-        $data = Student::select('id','amount','validity')->where('code', $request->code)->get();
-        if ($data->isEmpty()){
+        $data = Student::select('id', 'amount', 'validity')->where('code', $request->code)->get();
+        if ($data->isEmpty()) {
             return response()->json("Code does not exist", 400);
         }
-        if ($request->amount < 0){
+        if ($request->amount < 0) {
             return response()->json("Amount cannot be negative", 200);
         }
 
 
-        if($request->date < $data[0]['validity']){
+        if ($request->date < $data[0]['validity']) {
             $total = $data[0]['amount'] - $request->amount;
-        
-            if ($total > 0){
+
+            if ($total > 0) {
 
                 //insert to transaction database
                 $transaction = new Transaction;
@@ -47,7 +50,7 @@ class ApiController extends Controller
                 $student->amount = $total;
                 $student->counter = $student->counter + 1;
                 $student->save();
-                
+
                 return response()->json("Transac Success", 200);
             } else {
                 return response()->json("Balance Not Enough", 200);
@@ -55,8 +58,6 @@ class ApiController extends Controller
         } else {
             return response()->json("Coupon Expired", 200);
         }
-
-        
     }
 
     public function register(Request $request)
@@ -73,8 +74,8 @@ class ApiController extends Controller
 
         $accessToken = $vendor->createToken('authToken')->accessToken;
 
-        return response([ 'vendors' => $vendor, 'access_token' => $accessToken]);
-    } 
+        return response(['vendors' => $vendor, 'access_token' => $accessToken]);
+    }
 
     public function login(Request $request)
     {
@@ -90,8 +91,5 @@ class ApiController extends Controller
         $accessToken = auth('vendor')->user()->createToken('authToken')->accessToken;
 
         return response(['vendors' => auth('vendor')->user(), 'access_token' => $accessToken]);
-
     }
-
-    
 }
