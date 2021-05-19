@@ -6,32 +6,26 @@
         <!-- Main Bar -->
         <div class="col-md">
             <div class="card">
-                <div class="card-header">{{ __('Manage Student') }}</div>
+                <div class="card-header">{{ __('Purchase History for')}} {{$student->name}}</div>
                 <div class="card-body">
                     <div class="container">
                         <div class="row text-center pt-5">
-                            <div class="col h3">List of Student</div>
+                            <div class="col h3">History of Purchase</div>
                         </div>
                         <div class="row">
-                            <table class="table table-sm table-bordered">
+                        <table class="table table-sm table-bordered">
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Phone</th>
-                                    <th>Code</th>
-                                    <th>Validity</th>
+                                    <th>Vendor Name</th>
                                     <th>Amount</th>
+                                    <th>Purchased At</th>
                                 </tr>
-                            @foreach ($student as $key => $data)
+                            @foreach ($history as $key => $data)
                                 <tr>
                                     <td>{{ $data-> id }}</td>
-                                    <td>{{ $data-> name }}</td>
-                                    <td>0{{ $data-> phone }}</td>
-                                    <td>{{ $data-> code }}</td>
-                                    <td>{{ $data-> validity }}</td>
+                                    <td>{{ $data-> vendor-> name}}</td>
                                     <td>{{ $data-> amount }}</td>
-                                    <td><a href="/student/history/{{ $data->id }}">History</a></td>
-                                    <td><a href="/student/edit/{{ $data->id }}">Edit</a></td>
+                                    <td>{{ $data-> created_at }}</td>  
                                 </tr>
                             @endforeach
                         </table>

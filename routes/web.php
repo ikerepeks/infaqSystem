@@ -33,6 +33,7 @@ Route::get('/student', [StudentController::class, 'index'])->name('student');
 Route::get('/student/manage', [StudentController::class, 'manage'])->name('manage');
 Route::post('/student/insert', [StudentController::class, 'insert'])->name('student.insert');
 Route::get('/student/edit/{student}', [StudentController::class, 'edit'])->name('student.edit');
+Route::get('/student/history/{student}', [StudentController::class, 'history'])->name('student.history');
 Route::patch('/student/update/{student}', [StudentController::class, 'update'])->name('student.manage');
 Route::delete('/student/delete/{student}', [StudentController::class, 'destroy'])->name('delete');
 
