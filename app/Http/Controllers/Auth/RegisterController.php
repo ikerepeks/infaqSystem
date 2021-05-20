@@ -73,8 +73,10 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'prefix' => 'MEALCARDDEFAULT',
         ]);
     }
+    
     //Specify Register form for each guard
     public function showAdminRegisterForm()
     {

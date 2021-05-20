@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ "MealCard User" }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ "MealCard" }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -37,6 +37,7 @@
                         <li class="p-3"><a href="{{ url('/student')}}">Add Student</a></li>
                         <li class="p-3"><a href="{{ url('/student/manage')}}">Manage Student</a></li>
                         <li class="p-3"><a href="{{ url('/student/importExportView')}}">Export/Import Excel</a></li>
+                        <li class="p-3"><a href="{{ url('/student/profile')}}">Edit Prefix</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

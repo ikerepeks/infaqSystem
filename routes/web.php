@@ -28,6 +28,9 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::get('/student/profile', [HomeController::class, 'profile']);
+Route::patch('/student/profile/{user}', [HomeController::class, 'update']);
+
 // Student Controller Route
 Route::get('/student', [StudentController::class, 'index'])->name('student');
 Route::get('/student/manage', [StudentController::class, 'manage'])->name('manage');

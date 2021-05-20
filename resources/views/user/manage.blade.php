@@ -22,7 +22,7 @@
                                     <th>Validity</th>
                                     <th>Amount</th>
                                 </tr>
-                            @foreach ($student as $key => $data)
+                                @foreach ($student as $key => $data)
                                 <tr>
                                     <td>{{ $data-> id }}</td>
                                     <td>{{ $data-> name }}</td>
@@ -33,8 +33,8 @@
                                     <td><a href="/student/history/{{ $data->id }}">History</a></td>
                                     <td><a href="/student/edit/{{ $data->id }}">Edit</a></td>
                                 </tr>
-                            @endforeach
-                        </table>
+                                @endforeach
+                            </table>
                         </div>
                     </div>
                 </div>

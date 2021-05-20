@@ -7,7 +7,6 @@ use App\Models\Student;
 use App\Exports\StudentsExport;
 use App\Imports\StudentsImport;
 use App\Models\Transaction;
-use App\Models\Vendor;
 
 class StudentController extends Controller
 {
@@ -31,11 +30,12 @@ class StudentController extends Controller
         ]);
 
         $count = count($request->name);
+        $prefix = auth()->user()->prefix;
 
         for ($i = 0; $i < $count; $i++) {
 
             $salt = uniqid();
-            $code = "UITMZAKAT" . $request->phone[$i] . $salt;
+            $code = $prefix . $request->phone[$i] . $salt;
             $userid = auth()->user()->id;
             $task = new Student();
             $task->name = $request->name[$i];
@@ -88,9 +88,10 @@ class StudentController extends Controller
         return redirect('/student/manage');
     }
 
-    public function history(Student $student){
+    public function history(Student $student)
+    {
         $history = Transaction::with('vendor')->where('code', $student->code)->get();
-        return view('user.history', compact('history','student'));
+        return view('user.history', compact('history', 'student'));
     }
 
     public function excelView()
